@@ -1,0 +1,59 @@
+<html>
+    <title>Hausaufgabe DWG44 - Benjamin Franneck</title>
+    <meta charset="UTF-8">
+  <body>
+    <div id="app"></div>
+  </body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    .profile-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 15px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      background-color: bisque;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+
+  <script type="text/babel">
+    // Kurzprofil-Komponente
+    const ProfileCard = ({ name, description, interests }) => (
+      <div className="profile-card">
+        <h2>{name}</h2>
+        <p>{description}</p>
+        <ul>
+          {interests.map((interest, index) => (
+            <li key={index}>{interest}</li>
+          ))}
+        </ul>
+      </div>
+    );
+
+    // Array mit Profilinformationen
+    const profiles = [
+      { name: "Benny Bianco", description: "Webentwickler aus Berlin", interests: ["I <3 JavaScript"] },
+      { name: "Thomas Worfner", description: "Designer aus Hamburg", interests: ["Photoshop", "Illustrator", "CSS"] },
+      { name: "Alice Jagler", description: "Alleskönnerin aus Aachen", interests: ["Node.js", "React", "MariaDB"] }
+    ];
+
+    // Rendering
+    const root = ReactDOM.createRoot(document.getElementById("app"));
+    root.render(
+      <div>
+        {profiles.map((profile, index) => (
+          <ProfileCard
+            key={index}
+            name={profile.name}
+            description={profile.description}
+            interests={profile.interests}
+          />
+        ))}
+      </div>
+    );
+  </script>
+</html>
